@@ -1,5 +1,5 @@
 package com.example.productorderservice.product;
 
-interface PropductPort {
+interface ProductPort {
     void save(Product product);
 }
