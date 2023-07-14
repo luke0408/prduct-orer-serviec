@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 @Table(name = "product")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+public
 class Product {
 
     @Id
