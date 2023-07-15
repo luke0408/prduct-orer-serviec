@@ -1,6 +1,10 @@
 package com.example.productorderservice.payment;
 
 import com.example.productorderservice.payment.PaymentRequest;
+import io.restassured.RestAssured;
+import io.restassured.response.ExtractableResponse;
+import io.restassured.response.Response;
+import org.springframework.http.MediaType;
 
 public class PaymentSteps {
 
@@ -9,5 +13,15 @@ public class PaymentSteps {
         final String cardNumber = "1234-1234-1234-1234";
         final PaymentRequest request = new PaymentRequest(orderId, cardNumber);
         return request;
+    }
+
+    static ExtractableResponse<Response> 주문결졔요청(PaymentRequest request) {
+        return RestAssured.given().log().all()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(request)
+                .when()
+                .post("/payments")
+                .then()
+                .log().all().extract();
     }
 }
